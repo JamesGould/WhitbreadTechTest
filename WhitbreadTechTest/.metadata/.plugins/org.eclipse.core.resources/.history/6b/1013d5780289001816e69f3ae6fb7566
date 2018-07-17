@@ -1,0 +1,84 @@
+package util;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.internal.Constants;
+
+import cucumber.api.CucumberOptions;
+
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.WebElement;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
+public class AppiumUtil extends Constants {
+	
+	public final static String PLATFORM_VERSION = "6.0";
+	public final static String PLATFORM_NAME = "Android";
+	public final static String DEVICE_NAME = "Android Emulator";
+	public final static String APP_PATH = "/src/app-debug.apk";
+	public final static String APP_ACTIVITY = "com.support.android.designlibdemo.MainActivity";
+	public final static String APP_PACKAGE = "com.support.android.designlibdemo";;
+	
+	public static AppiumDriver driver;
+	public static int IMPLICIT_TIME_SECONDS = 30;
+	
+	public void init()
+	{
+		DesiredCapabilities caps = DesiredCapabilities.android();
+	}
+	
+	public static void startApp() throws MalformedURLException {		
+		driver=new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), getDesiredCapabiltiesForAndroid());
+	}
+	
+	private static Capabilities getDesiredCapabiltiesForAndroid() {
+		DesiredCapabilities caps = DesiredCapabilities.android();
+		caps.setCapability("platformVersion", PLATFORM_VERSION);
+		caps.setCapability("platformName", PLATFORM_NAME);
+		caps.setCapability("deviceName", DEVICE_NAME);
+		caps.setCapability("appPath", APP_PATH);
+		caps.setCapability("appActivity", APP_ACTIVITY);
+		caps.setCapability("appPackage", APP_PACKAGE);
+		
+		
+//		caps.setCapability("appPackage", "com.android.chrome");
+//		caps.setCapability("appActivity", "com.google.android.apps.chrome.Main");
+		
+		return caps;
+	}
+	
+	public static Boolean checkElementDisplayed(AndroidElement element)
+    {
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        try 
+        {
+        	Boolean b = element.isDisplayed();
+        	driver.manage().timeouts().implicitlyWait(IMPLICIT_TIME_SECONDS, TimeUnit.SECONDS);
+        	return b;
+        } 
+        catch (Exception e) 
+        {
+        	driver.manage().timeouts().implicitlyWait(IMPLICIT_TIME_SECONDS, TimeUnit.SECONDS);
+        	return false;
+        }        
+    }
+	
+	public static AndroidElement waitUntillTappable(AndroidElement element)
+	{
+		 WebDriverWait wait = new WebDriverWait(driver, 20);
+		 wait.until(ExpectedConditions.elementToBeClickable(element));
+		 return element;
+	}
+	
+	public static void tap_button(AndroidElement region) {
+		waitUntillTappable(region);
+		driver.tap(1, region, 1);
+	}
+}

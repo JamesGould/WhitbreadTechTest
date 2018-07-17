@@ -1,0 +1,14 @@
+package screens;
+
+import java.util.Locale.Category;
+
+public class homeScreen extends screenobject {
+	
+	public Boolean exists() {
+		return checkElementDisplayed(waitUntillTappable());
+	}
+	
+	public void firstTapped() {
+		category1.tap_button();
+	}
+}

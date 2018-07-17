@@ -1,0 +1,5 @@
+Feature: Scenario1
+
+Scenario: Check if all the 3 categories of cheese are displayed.
+	Given the home screen is being displayed
+	Then all 3 categories of cheese will be displayed

@@ -1,0 +1,32 @@
+package screens;
+
+import java.util.Locale.Category;
+
+
+Public final static String homeScreenMenu = "Cheesesquare";
+
+Public final static String category1 = "CATEGORY 1";
+Public final static String category2 = "CATEGORY 2";
+Public final static String category3 = "CATEGORY 3";
+
+Public final static String category1Item1 = "Roquefort";
+Public final static String category2Item1 = "Cuajada";
+Public final static String category3Item1 = "Doppelrhamstufel";
+
+Public final static String MenuButton = "MenuButton";
+Public final static String NightMode = "Night Mode";
+
+Public final static String NightModeAlways = "Night (always)";
+
+public class homeScreen extends screenobject {
+	
+	
+	
+	public Boolean exists() {
+		return checkElementDisplayed(waitUntillTappable(homeScreenMenu));
+	}
+	
+	public void firstTapped() {
+		category1.tap_button();
+	}
+}

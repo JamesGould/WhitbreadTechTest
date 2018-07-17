@@ -1,0 +1,7 @@
+Feature: Scenario3
+
+Scenario: Change the mode to Night(Always)
+	Given the home screen is being displayed
+	When the mode button is tapped
+	And Night (always) is selected
+	Then app will be displayed in night mode

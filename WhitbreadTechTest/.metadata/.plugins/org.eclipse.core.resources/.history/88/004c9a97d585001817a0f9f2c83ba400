@@ -1,0 +1,104 @@
+package screens;
+
+import java.net.MalformedURLException;
+
+import com.perspecs.screenobjects.mainmenuSO;
+import com.perspecs.screenobjects.onboardingSO;
+import com.perspecs.util.AppiumUtil;
+
+import cucumber.api.java.After;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import static org.junit.Assert.assertTrue;
+
+public class homeScreenSteps extends AppiumUtil {
+	
+	@Given("^the home screen is being displayed$")
+	public void start_app() throws MalformedURLException
+	{
+		startApp();
+	}
+
+	@Then("^the Onboarding screen will be displayed$")
+	public void onboarding_will_be_displayed()
+	{
+		onboardingSO onboarding = new onboardingSO();
+		assertTrue(onboarding.exists());
+	}
+
+	@Given("^the Onboarding screen is being displayed$")
+	public void onboarding_is_being_displayed() throws MalformedURLException
+	{
+		startApp();	
+		onboardingSO onboarding = new onboardingSO();
+		assertTrue(onboarding.exists());
+	}
+
+	@When("^the Continue button is tapped$")
+	public void onbaording_button_tapped()
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.tap_continue_button();
+	}
+
+	@When("^\"([^\"]*)\" is tapped$")
+	public void onboarding_region_tapped(String region)
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.onboarding_tap_region(region);
+	}
+
+	@Then("^the \"([^\"]*)\" will be selected$")
+	public void region_will_be_selected(String region)
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.region_selected(region);
+	}
+
+	@Given("^the \"([^\"]*)\" is already selected$")
+	public void region_is_already_selected_state(String region)
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.onboarding_tap_region(region);
+		onboarding.region_selected(region);
+	}
+
+	@Then("^the \"([^\"]*)\" will be deselected$")
+	public void region_to_be_deselected(String region)
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.region_selection_state_deslected(region);
+	}
+
+	@Then("^\"([^\"]*)\" and \"([^\"]*)\" will both be selected$")
+	public void mulitple_selected(String region1, String region2)
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.multiple_selected_regions(region1, region2);
+	}
+
+	@Given("^\"([^\"]*)\" has been selected$")
+	public void region_selected_state_selected(String region)
+	{
+		onboardingSO onboarding = new onboardingSO();
+		onboarding.region_selected(region);
+	}
+
+	@Then("^the Main menu will be displayed$")
+	public void main_menu_displayed() throws MalformedURLException
+	{
+		mainmenuSO mainmenu = new mainmenuSO();
+		mainmenu.exists();
+	}
+	
+	@After
+	public void closeAppDown(){
+		if(driver != null && driver.getSessionId() != null)
+		{
+			driver.closeApp();
+			driver.quit();
+		}
+	}
+	
+}

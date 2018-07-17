@@ -1,0 +1,54 @@
+package screens;
+
+import java.util.Locale.Category;
+
+import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+
+public class homeScreen extends screenobject {
+
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement homeScreenMenuCheese;
+	
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement category1;
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement category2;
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement category3;
+	
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement category1Item1;
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement category2Item1;
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement category3Item1;
+	
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement MenuButton;
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement NightMode;
+	
+	@AndroidFindBy(xpath="//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]") public AndroidElement NightModeAlways;
+
+	public Boolean exists() {
+		return checkElementDisplayed(waitUntillTappable(homeScreenMenuCheese));
+	}
+	
+	public void firstTapped() {
+		tap_button(category1);
+	}
+	
+	public Boolean firstCategoryDisplayed() {
+		return checkElementDisplayed(waitUntillTappable(category1Item1));
+	}
+	
+	public void firstCategoryTapped() {
+		tap_button(category2);
+	}
+	
+	public Boolean secondCategoryDisplayed() {
+		return checkElementDisplayed(waitUntillTappable(category2Item1));
+	}
+	
+	public void ThirdCategoryTapped() {
+		tap_button(category3);
+	}
+	
+	public Boolean ThirdCategoryDisplayed() {
+		return checkElementDisplayed(waitUntillTappable(category3Item1));
+	}
+	
+	
+}

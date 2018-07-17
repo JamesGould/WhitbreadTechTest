@@ -1,0 +1,6 @@
+Feature: Scenario2
+
+Scenario: Check if all the 3 sections are displayed for the selected cheese
+Given the home screen is being displayed
+When the first category of cheese is tapped
+Then the contents for the first category of cheese will be displayed

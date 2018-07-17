@@ -1,0 +1,15 @@
+package screens;
+
+import java.util.Locale.Category;
+import org.testng.internal.Constants;
+
+public class homeScreen extends screenobject {
+	
+	public Boolean exists() {
+		return checkElementDisplayed(waitUntillTappable(homeScreenMenuCheese));
+	}
+	
+	public void firstTapped() {
+		category1.tap_button();
+	}
+}

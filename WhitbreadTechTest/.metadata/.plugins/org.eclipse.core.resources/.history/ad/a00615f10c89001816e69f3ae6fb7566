@@ -1,0 +1,83 @@
+package steps;
+
+import java.net.MalformedURLException;
+
+import util.AppiumUtil;
+
+import cucumber.api.java.After;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import screens.homeScreen;
+
+import static org.junit.Assert.assertTrue;
+
+public class homeSteps extends AppiumUtil {
+	
+	@Given("^the home screen is being displayed$")
+	public void start_app() throws MalformedURLException
+	{
+		startApp();
+	}
+
+	@Then("^all three categories of cheese will be displayed$")
+	public void homeScreenIsDisplayed()
+	{
+		homeScreen homescreen = new homeScreen();
+		homescreen.exists();
+	}
+
+	@When("^the first category of cheese is tapped$")
+	public void firstCategoryTapped()
+	{
+		homeScreen homescreen = new homeScreen();
+		homescreen.firstTapped();
+	}
+	
+	@Then("^the contents for the first category of cheese will be displayed$")
+	public void firstCategoryDisplayed()
+	{
+		homeScreen homescreen = new homeScreen();
+		homescreen.
+	}
+	
+	@When("^the mode button is tapped$")
+	public void closeAppDownStuff3()
+	{
+    	if(driver != null && driver.getSessionId() != null)
+		{
+			driver.closeApp();
+			driver.quit();
+		}
+	}
+	
+	@When("^Night \\(always\\) is selected$")
+	public void closeAppDownStuff4()
+	{
+    	if(driver != null && driver.getSessionId() != null)
+		{
+			driver.closeApp();
+			driver.quit();
+		}
+	}
+	
+	@Then("^app will be displayed in night mode$")
+	public void closeAppDownStuff5()
+	{
+    	if(driver != null && driver.getSessionId() != null)
+		{
+			driver.closeApp();
+			driver.quit();
+		}
+	}
+
+	@After
+	public void closeAppDown(){
+		if(driver != null && driver.getSessionId() != null)
+		{
+			driver.closeApp();
+			driver.quit();
+		}
+	}
+	
+}

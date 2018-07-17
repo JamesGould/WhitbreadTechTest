@@ -1,0 +1,6 @@
+Feature: Scenario3
+
+Scenario: Change the mode to Night(Always)
+Given stuff
+When stuff sbj
+Then dbvyguhijk
